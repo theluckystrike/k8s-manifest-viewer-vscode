@@ -1,0 +1,338 @@
+{
+  "name": "zovo-k8s-manifest-viewer",
+  "displayName": "Kubernetes Manifest Viewer",
+  "description": "Open Kubernetes YAML manifests in VS Code: multi-document resource tree, container security checks and label selector matching, offline.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0F172A",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/k8s-manifest-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/k8s-manifest-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/k8s-manifest-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "yaml",
+    "manifest",
+    "deployment",
+    "kustomize",
+    "devops",
+    "security"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-k8s.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-k8s.viewer",
+        "displayName": "Kubernetes Manifest Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.k8s.yaml"
+          },
+          {
+            "filenamePattern": "*.k8s.yml"
+          },
+          {
+            "filenamePattern": "deployment.yaml"
+          },
+          {
+            "filenamePattern": "deployment.yml"
+          },
+          {
+            "filenamePattern": "service.yaml"
+          },
+          {
+            "filenamePattern": "service.yml"
+          },
+          {
+            "filenamePattern": "ingress.yaml"
+          },
+          {
+            "filenamePattern": "ingress.yml"
+          },
+          {
+            "filenamePattern": "kustomization.yaml"
+          },
+          {
+            "filenamePattern": "kustomization.yml"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoK8s.openWith",
+        "title": "Open in Kubernetes Manifest Viewer",
+        "category": "Kubernetes Manifest Viewer",
+        "icon": "$(layers)"
+      },
+      {
+        "command": "zovoK8s.openSample",
+        "title": "Open the Sample Kubernetes Manifest",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.openWalkthrough",
+        "title": "Get Started",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.supportDeveloper",
+        "title": "Support the developer",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.auditSecurity",
+        "title": "Audit K8s manifest security posture (Pro, 1 free try)",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.diffManifests",
+        "title": "Compare two Kubernetes manifests (Pro, 1 free try)",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.exportInventory",
+        "title": "Export workload inventory to CSV and Markdown (Pro, 1 free try)",
+        "category": "Kubernetes Manifest Viewer"
+      },
+      {
+        "command": "zovoK8s.zovoPro.auditSecurity",
+        "title": "Zovo Pro: Audit K8s manifest security posture"
+      },
+      {
+        "command": "zovoK8s.zovoPro.diffManifests",
+        "title": "Zovo Pro: Compare two Kubernetes manifests"
+      },
+      {
+        "command": "zovoK8s.zovoPro.exportInventory",
+        "title": "Zovo Pro: Export workload inventory to CSV and Markdown"
+      },
+      {
+        "command": "zovoK8s.zovoTitle.auditSecurity",
+        "title": "Zovo Pro: Audit K8s manifest security posture"
+      },
+      {
+        "command": "zovoK8s.zovoTitle.diffManifests",
+        "title": "Zovo Pro: Compare two Kubernetes manifests"
+      },
+      {
+        "command": "zovoK8s.zovoTitle.exportInventory",
+        "title": "Zovo Pro: Export workload inventory to CSV and Markdown"
+      },
+      {
+        "command": "zovoK8s.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoK8s.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoK8s.zovoTitle.auditSecurity",
+          "when": "activeCustomEditorId == 'zovo-k8s.viewer' && config.zovoK8s.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoK8s.zovoTitle.diffManifests",
+          "when": "activeCustomEditorId == 'zovo-k8s.viewer' && config.zovoK8s.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoK8s.zovoTitle.exportInventory",
+          "when": "activeCustomEditorId == 'zovo-k8s.viewer' && config.zovoK8s.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoK8s.openWith",
+          "when": "resourceFilename =~ /\\.(ya?ml)$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoK8s.zovoPro.auditSecurity",
+          "when": "resourceFilename =~ /\\.(ya?ml)$/i && !explorerResourceIsFolder && config.zovoK8s.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoK8s.zovoPro.diffManifests",
+          "when": "resourceFilename =~ /\\.(ya?ml)$/i && !explorerResourceIsFolder && config.zovoK8s.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoK8s.zovoPro.exportInventory",
+          "when": "resourceFilename =~ /\\.(ya?ml)$/i && !explorerResourceIsFolder && config.zovoK8s.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoK8s.auditSecurity",
+          "when": "config.zovoK8s.showProTools"
+        },
+        {
+          "command": "zovoK8s.diffManifests",
+          "when": "config.zovoK8s.showProTools"
+        },
+        {
+          "command": "zovoK8s.exportInventory",
+          "when": "config.zovoK8s.showProTools"
+        },
+        {
+          "command": "zovoK8s.zovoPro.auditSecurity",
+          "when": "false"
+        },
+        {
+          "command": "zovoK8s.zovoPro.diffManifests",
+          "when": "false"
+        },
+        {
+          "command": "zovoK8s.zovoPro.exportInventory",
+          "when": "false"
+        },
+        {
+          "command": "zovoK8s.zovoTitle.auditSecurity",
+          "when": "false"
+        },
+        {
+          "command": "zovoK8s.zovoTitle.diffManifests",
+          "when": "false"
+        },
+        {
+          "command": "zovoK8s.zovoTitle.exportInventory",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Kubernetes Manifest Viewer",
+      "properties": {
+        "zovoK8s.maxFileMB": {
+          "type": "number",
+          "default": 16,
+          "minimum": 1,
+          "maximum": 128,
+          "description": "Files up to this size open in the Kubernetes Manifest Viewer."
+        },
+        "zovoK8s.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Resources shown on one page of the manifest tree table."
+        },
+        "zovoK8s.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (security audit, manifest diff and workload inventory export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoK8s.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 manifest files open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoK8s.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.k8sview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoK8s.start",
+        "title": "Get started with the Kubernetes Manifest Viewer",
+        "description": "Inspect Kubernetes YAML manifests in VS Code: multi-document resource tree, container security checks and label selector matching, offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a Kubernetes manifest",
+            "description": "Click any *.k8s.yaml, deployment.yaml, service.yaml, ingress.yaml or kustomization.yaml file in the Explorer, or run Open in Kubernetes Manifest Viewer on any open YAML file.\n[Open the sample Kubernetes manifest](command:zovoK8s.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A multi-document Kubernetes manifest open in the viewer showing resources, container security checks and label selector matches."
+            },
+            "completionEvents": [
+              "onCommand:zovoK8s.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}
